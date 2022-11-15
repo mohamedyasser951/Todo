@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-const Color bluclr = Color(0xFF536FDF);
+const Color bluclr = Colors.lightBlue;
 const Color yellowclr = Color(0xFFFFB746);
 const Color pinkclr = Color(0xFFff4667);
 const Color primaryclr = bluclr;
@@ -25,7 +25,7 @@ class Themes {
 TextStyle get subHeadingStyle {
   return GoogleFonts.lato(
       textStyle: TextStyle(
-          fontSize: 24.0,
+          fontSize: 23.0,
           fontWeight: FontWeight.bold,
           color: Get.isDarkMode ? Colors.grey[100] : Colors.grey[600]));
 }
@@ -33,7 +33,7 @@ TextStyle get subHeadingStyle {
 TextStyle get headingStyle {
   return GoogleFonts.lato(
       textStyle: const TextStyle(
-    fontSize: 30.0,
+    fontSize: 28.0,
     fontWeight: FontWeight.bold,
   ));
 }
@@ -41,7 +41,7 @@ TextStyle get headingStyle {
 TextStyle get titleStyle {
   return GoogleFonts.lato(
       textStyle: TextStyle(
-          fontSize: 16.0,
+          fontSize: 14.0,
           fontWeight: FontWeight.bold,
           color: Get.isDarkMode ? Colors.white : Colors.black));
 }
@@ -49,7 +49,7 @@ TextStyle get titleStyle {
 TextStyle get subTitleStyle {
   return GoogleFonts.lato(
       textStyle: TextStyle(
-          fontSize: 14.0,
+          fontSize: 13.0,
           fontWeight: FontWeight.bold,
           color: Get.isDarkMode ? Colors.grey[100] : Colors.grey[600]));
 }

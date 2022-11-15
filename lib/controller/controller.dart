@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:sqflite/sqflite.dart';
-import 'package:todo/controller/db.dart';
 import 'package:todo/model/model.dart';
 import 'package:todo/services/services.dart';
 import 'package:todo/view/themes.dart';

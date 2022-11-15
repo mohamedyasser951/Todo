@@ -1,10 +1,8 @@
-
 import 'package:date_picker_timeline/date_picker_timeline.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:todo/controller/db.dart';
 import 'package:todo/model/model.dart';
 import 'package:todo/services/services.dart';
 import 'package:todo/services/themeservice.dart';
@@ -21,7 +19,6 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       backgroundColor: Theme.of(context).backgroundColor,
       appBar: _appBar(context),
       body: GetBuilder<TaskController>(
@@ -37,13 +34,26 @@ class Home extends StatelessWidget {
                       return savedTasks();
                     } else {
                       return Container(
-                        margin: EdgeInsets.only(
-                            top: MediaQuery.of(context).size.width - 100),
-                        height: 100,
-                        width: 100,
-                        child: Icon(Icons.menu,size:100,color: primaryclr,),
-                     
-                      );
+                          margin: EdgeInsets.only(
+                              top: MediaQuery.of(context).size.height - 500),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Container(
+                                height: 100,
+                                width: 100,
+                                decoration: BoxDecoration(
+                                    image: DecorationImage(
+                                        image: AssetImage("images/image1.png"),
+                                        fit: BoxFit.cover)),
+                              ),
+                              Text(
+                                "You do not have any Task yet!\n Add new tasks to make your days productive.",
+                                style: subTitleStyle,
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          ));
                     }
                   },
                 ),
@@ -55,7 +65,7 @@ class Home extends StatelessWidget {
     );
   }
 
-  Widget savedTasks() {
+  savedTasks() {
     return GetBuilder<TaskController>(builder: (controller) {
       return ListView.builder(
         physics: const NeverScrollableScrollPhysics(),
@@ -74,11 +84,17 @@ class Home extends StatelessWidget {
               margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
               height: 100,
               decoration: BoxDecoration(
-                color: controller.savedData[index]['color'] == 0
-                    ? primaryclr
-                    : _taskController.savedData[index]['color'] == 1
-                        ? pinkclr
-                        : yellowclr,
+                gradient: LinearGradient(
+                  end: Alignment(1, 4),
+                  colors: [
+                    controller.savedData[index]['color'] == 0
+                        ? primaryclr
+                        : _taskController.savedData[index]['color'] == 1
+                            ? pinkclr
+                            : yellowclr,
+                    Colors.white70,
+                  ],
+                ),
                 borderRadius: BorderRadius.circular(12.0),
               ),
               child: Padding(
@@ -91,7 +107,7 @@ class Home extends StatelessWidget {
                       style: titleStyle.copyWith(color: Colors.white),
                     ),
                     SizedBox(
-                      height: 6,
+                      height: 4,
                     ),
                     Row(
                       children: [
@@ -113,7 +129,7 @@ class Home extends StatelessWidget {
                       ],
                     ),
                     SizedBox(
-                      height: 6,
+                      height: 4,
                     ),
                     Expanded(
                       child: Text(
@@ -131,68 +147,9 @@ class Home extends StatelessWidget {
     });
   }
 
-  // Widget cardItem() => AnimatedContainer(
-  //       duration: const Duration(seconds: 1),
-  //       margin: const EdgeInsets.symmetric(horizontal: 20, vertical: 6),
-  //       height: 100,
-  //       decoration: BoxDecoration(
-  //         color: controller.savedData[index]['color'] == 0
-  //             ? primaryclr
-  //             : _taskController.savedData[index]['color'] == 1
-  //                 ? pinkclr
-  //                 : yellowclr,
-  //         borderRadius: BorderRadius.circular(12.0),
-  //       ),
-  //       child: Padding(
-  //         padding: const EdgeInsets.all(12.0),
-  //         child: Column(
-  //           crossAxisAlignment: CrossAxisAlignment.start,
-  //           children: [
-  //             Text(
-  //               "${controller.savedData[index]['title']}",
-  //               style: titleStyle.copyWith(color: Colors.white),
-  //             ),
-  //             SizedBox(
-  //               height: 6,
-  //             ),
-  //             Row(
-  //               children: [
-  //                 Icon(
-  //                   Icons.access_time,
-  //                   color: Colors.white,
-  //                 ),
-  //                 SizedBox(
-  //                   width: 5,
-  //                 ),
-  //                 Text(
-  //                   "${_taskController.savedData[index]['startTime']}",
-  //                   style: heroStyle,
-  //                 ),
-  //                 Text(
-  //                   "- ${controller.savedData[index]['endTime']}",
-  //                   style: heroStyle,
-  //                 )
-  //               ],
-  //             ),
-  //             SizedBox(
-  //               height: 6,
-  //             ),
-  //             Expanded(
-  //               child: Text(
-  //                 "${controller.savedData[index]['note']}",
-  //                 style: heroStyle,
-  //                 maxLines: 2,
-  //                 overflow: TextOverflow.ellipsis,
-  //               ),
-  //             )
-  //           ],
-  //         ),
-  //       ),
-  //     );
-
   _addTaskBar() {
     return Padding(
-      padding: const EdgeInsets.only(top: 20.0, left: 20.0, right: 8.0),
+      padding: const EdgeInsets.only(top: 5.0, left: 20.0, right: 8.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -223,11 +180,11 @@ class Home extends StatelessWidget {
 
   _selectedDatePicker() {
     return Container(
-      margin: const EdgeInsets.only(left: 20.0, top: 20.0),
+      margin: const EdgeInsets.only(left: 20.0, top: 8.0),
       child: DatePicker(
         DateTime.now(),
-        height: 100.0,
-        width: 80.0,
+        height: 90.0,
+        width: 75.0,
         initialSelectedDate: DateTime.now(),
         selectionColor: primaryclr,
         selectedTextColor: Colors.white,
@@ -272,6 +229,10 @@ class Home extends StatelessWidget {
           child: const CircleAvatar(
             backgroundColor: primaryclr,
             radius: 20.0,
+            child: Icon(
+              Icons.person,
+              color: Colors.white,
+            ),
           ),
         )
       ],

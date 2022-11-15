@@ -45,7 +45,7 @@ class MyInputField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8.0),
+      padding: const EdgeInsets.only(top: 4.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -54,8 +54,8 @@ class MyInputField extends StatelessWidget {
             style: titleStyle,
           ),
           Container(
-            height: 52.0,
-            margin:const EdgeInsets.only(top: 8.0),
+            height: 48.0,
+            margin:const EdgeInsets.only(top: 6.0),
              padding:const EdgeInsets.only(left: 14.0),
             decoration: BoxDecoration(
               border: Border.all(color: Colors.grey, width: 1.0),
